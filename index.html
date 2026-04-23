@@ -1,263 +1,1230 @@
-<div style="background:linear-gradient(90deg,#dc2626,#b91c1c);color:white;text-align:center;padding:10px 20px;font-weight:700;font-size:0.95rem;position:sticky;top:0;z-index:9999;">
-  🔥 Limited Time: Save 20% today only — prices go up at midnight · Use at checkout: <span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:4px;font-family:monospace;">TONIGHT20</span>
-</div><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home | CashRescue Now</title>
-  <meta name="description" content="When cash flow is tight, you need fast answers — not a 6-week consulting engagement. Get a clear audit, specific action steps, and a recovery plan within 24-48 hours.">
-  <meta property="og:title" content="Home | CashRescue Now">
-  <meta property="og:description" content="When cash flow is tight, you need fast answers — not a 6-week consulting engagement. Get a clear audit, specific action steps, and a recovery plan within 24-48 hours.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thecashrescue.com/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Home | CashRescue Now">
-  <meta name="twitter:description" content="When cash flow is tight, you need fast answers — not a 6-week consulting engagement. Get a clear audit, specific action steps, and a recovery plan within 24-48 hours.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "CashRescue Now",
-  "description": "Emergency cash flow recovery systems, debt reduction frameworks, and financial first-aid kits.",
-  "url": "https://thecashrescue.com",
-  "email": "hello@thecashrescue.com"
-}
-</script>
-<link rel="canonical" href="https://thecashrescue.com/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CashRescue Now — Emergency Revenue Rescue for Freelancers &amp; Business Owners</title>
+  <meta name="description" content="Your business has a cash flow emergency. CashRescue Now delivers done-for-you revenue sprints, digital kits, and action plans that generate results in 24–72 hours. Not a loan — a sprint." />
+  <meta property="og:title" content="CashRescue Now — Fix Your Revenue Crisis Today" />
+  <meta property="og:description" content="Emergency revenue sprints for freelancers and business owners. Digital kits, done-for-you campaigns, and same-day turnaround. Not a loan — a sprint." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thecashrescue.com/" />
+  <link rel="canonical" href="https://thecashrescue.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Stripe Checkout — no external JS needed -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0f;
+      --bg-card:   #111118;
+      --bg-card2:  #16161f;
+      --red:       #ef4444;
+      --red-dark:  #dc2626;
+      --red-glow:  rgba(239,68,68,0.15);
+      --text:      #f1f1f6;
+      --muted:     #8888a0;
+      --border:    rgba(255,255,255,0.07);
+      --white:     #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── UTILITY ─────────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section { padding: 96px 0; }
+    .section--tight { padding: 64px 0; }
+    .tag {
+      display: inline-block;
+      background: var(--red-glow);
+      color: var(--red);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .badge-new {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 7px;
+      vertical-align: middle;
+      margin-left: 8px;
+      position: relative;
+      top: -1px;
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+    .nav-mobile-toggle { display: none; cursor: pointer; }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: #111118;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+        gap: 20px;
+        align-items: flex-start;
+      }
+    }
+
+    /* ── ALERT BANNER ────────────────────────────────────────────────────── */
+    .alert-banner {
+      background: var(--red);
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .alert-banner span { opacity: 0.85; }
+
+    /* ── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 80px 0 96px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-glow);
+      border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fca5a5;
+      margin-bottom: 32px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .highlight { color: var(--red); }
+    .hero p.lead {
+      font-size: clamp(17px, 2.5vw, 22px);
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 40px;
+      line-height: 1.55;
+    }
+    .hero-disclaimer {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(239,68,68,0.35);
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(239,68,68,0.45);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+    /* ── STATS BAR ───────────────────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      padding: 36px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    @media (max-width: 640px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
+      .stat-item { border-bottom: 1px solid var(--border); }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────────────────────────────── */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .section-header p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+    }
+    .step-number {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .step-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .step-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .step-card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
+
+    /* ── PRODUCTS ────────────────────────────────────────────────────────── */
+    .products-section { background: var(--bg-card2); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .product-card:hover {
+      border-color: rgba(239,68,68,0.3);
+      transform: translateY(-4px);
+    }
+    .product-card.featured {
+      border-color: var(--red);
+      box-shadow: 0 0 0 1px var(--red), 0 8px 40px rgba(239,68,68,0.18);
+      position: relative;
+    }
+    .featured-label {
+      position: absolute;
+      top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--red);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 0 0 8px 8px;
+    }
+    .product-tier {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .product-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .product-price {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .product-price-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .product-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .product-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .product-features li {
+      font-size: 14px;
+      color: #ccc;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .product-features li:last-child { border-bottom: none; }
+    .product-features li::before {
+      content: '✓';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .gumroad-button {
+      display: block;
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 9px;
+      text-align: center;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+    .gumroad-button:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+    }
+    .product-card.free-card { border-color: rgba(255,255,255,0.12); }
+    .product-card.free-card .gumroad-button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .product-card.free-card .gumroad-button:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+    }
+    .new-product-note {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 8px;
+      font-style: italic;
+    }
+    @media (max-width: 960px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } }
+
+    /* ── COMPLIANCE DISCLAIMER ───────────────────────────────────────────── */
+    .compliance-box {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .compliance-box strong { color: var(--red); }
+
+    /* ── SOCIAL PROOF ────────────────────────────────────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .stars {
+      color: #fbbf24;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      color: #d0d0e0;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--red-glow);
+      border: 1px solid rgba(239,68,68,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .author-title {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    @media (max-width: 860px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* ── GUARANTEE ───────────────────────────────────────────────────────── */
+    .guarantee-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 20px;
+      padding: 56px 48px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .guarantee-icon { font-size: 56px; margin-bottom: 20px; }
+    .guarantee-box h2 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .guarantee-box p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    @media (max-width: 600px) { .guarantee-box { padding: 36px 24px; } }
+
+    /* ── FAQ ─────────────────────────────────────────────────────────────── */
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: var(--bg-card);
+      border: none;
+      color: var(--text);
+      text-align: left;
+      padding: 22px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s;
+      font-family: inherit;
+    }
+    .faq-question:hover { background: var(--bg-card2); }
+    .faq-icon {
+      width: 24px; height: 24px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--red-glow);
+      border: 1px solid rgba(239,68,68,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+      background: var(--bg-card);
+    }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer-inner {
+      padding: 0 24px 24px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── CTA SECTION ─────────────────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, #16060a 0%, #0a0a0f 50%, #0f0610 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-inner {
+      text-align: center;
+      padding: 96px 24px;
+    }
+    .cta-inner h2 {
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      line-height: 1.05;
+    }
+    .cta-inner h2 .highlight { color: var(--red); }
+    .cta-inner p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.55;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 56px 0 32px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .footer-brand-name span { color: var(--red); }
+    .footer-brand-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .footer-contact a {
+      font-size: 13px;
+      color: var(--red);
+      transition: opacity 0.2s;
+    }
+    .footer-contact a:hover { opacity: 0.75; }
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-legal {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-legal a { color: var(--muted); text-decoration: underline; }
+    @media (max-width: 700px) {
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
-<body data-business-id="b17">
-  <header class="site-header">
+<body>
+
+  <!-- ALERT BANNER -->
+  <div class="alert-banner">
+    Only <strong>3 sprint slots</strong> available per day — once they're gone, they're gone.
+    <span>Don't wait until tomorrow to fix today's crisis.</span>
+  </div>
+
+  <!-- NAV -->
+  <nav>
     <div class="container">
-      <a href="./index.html" class="logo"><span>C</span>ashRescue Now</a>
-      <nav class="nav-links">
-    <a href="./index.html" class="active">Home</a>
-    <a href="./offer.html">Services</a>
-    <a href="./checkout.html">Get Started</a>
-      </nav>
-    </div>
-  </header>
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">Emergency Cash Flow Audits &amp; Recovery Sprints</div>
-        <h1>Cash Flow Crisis? Get Clear in 24 Hours.</h1>
-        <p>Emergency cash flow audits that show you exactly where the money is stuck, leaking, or untapped. Walk away with a clear recovery plan and specific next steps — fast.</p>
-        <div class="btn-group">
-          <a href="./offer.html" class="btn btn-primary">Get Your Cash Audit</a>
-        </div>
+      <div class="nav-inner">
+        <div class="nav-logo">Cash<span>Rescue</span> Now</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#testimonials">Results</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#products" class="nav-cta">Get Rescued Now</a></li>
+        </ul>
+        <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect y="4" width="22" height="2" rx="1" fill="#f1f1f6"/>
+            <rect y="10" width="22" height="2" rx="1" fill="#f1f1f6"/>
+            <rect y="16" width="22" height="2" rx="1" fill="#f1f1f6"/>
+          </svg>
+        </button>
       </div>
     </div>
-  </section>
-  <section class="section section-alt">
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
-      <h2 class="section-title">Why Choose CashRescue Now</h2>
-      <p class="section-subtitle">Here's what makes us different.</p>
-      <div class="features-grid">
-        <div class="feature-card">
-          <h3>24-Hour Turnaround</h3>
-          <p>When cash is tight, you can&#x27;t wait weeks. Our audit is delivered within 24 hours of receiving your data.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Specific, Not Generic</h3>
-          <p>No vague advice. You get specific dollar amounts, account references, and action items with deadlines.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Confidential &amp; Secure</h3>
-          <p>Your financial data is handled with strict confidentiality. We use encrypted transfers and delete data after completion.</p>
-        </div>
+      <div class="hero-eyebrow">Live rescue sessions available now</div>
+      <h1>
+        Your Business Has a<br />
+        <span class="highlight">Cash Flow Emergency.</span><br />
+        We Fix It Today.
+      </h1>
+      <p class="lead">
+        Not a loan. Not a gimmick. A done-for-you service sprint that generates real revenue from your existing skills, audience, and assets — in 24 to 72 hours.
+      </p>
+      <div class="hero-cta-group">
+        <a class="btn-primary gumroad-button" href="https://gumroad.com/l/cashrescue-now-playbook">
+          Start Your Rescue — $47
+        </a>
+        <a class="btn-ghost" href="#products">Browse All Offers</a>
       </div>
+      <p class="hero-disclaimer">
+        Service sprints. Not lending. Not financial advice.
+        CashRescue Now provides service-based deliverables only.
+      </p>
     </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">What People Are Saying</h2>
-      <div class="proof-grid">
-        <div class="proof-card">
-          <blockquote>"Found $8,400 in recurring expenses we forgot about. The audit paid for itself 40x over."</blockquote>
-          <cite>— Small Business Owner</cite>
-        </div>
-        <div class="proof-card">
-          <blockquote>"Finally understood where the money was going. The recovery plan was crystal clear."</blockquote>
-          <cite>— Agency Founder</cite>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section  section-alt">
-    <div class="container">
-      <h2 class="section-title">What We Offer</h2>
-      <p class="section-subtitle">Choose the option that fits your needs.</p>
-      <div class="offers-grid">
-        <div class="offer-card">
-          <h3>Cash Flow Audit</h3>
-          <div class="offer-price">$197</div>
-          <p>A clear snapshot of where your money is going and where it&#x27;s stuck.</p>
-          <ul>
-          <li>Full cash flow mapping</li>
-          <li>Leak identification</li>
-          <li>Quick-win recommendations</li>
-          <li>24-hour delivery</li>
-          </ul>
-        </div>
-        <div class="offer-card featured">
-          <h3>Recovery Sprint</h3>
-          <div class="offer-price">$497</div>
-          <p>Audit plus hands-on implementation of your top recovery actions.</p>
-          <ul>
-          <li>Everything in Cash Flow Audit</li>
-          <li>Top 5 recovery actions implemented</li>
-          <li>7-day action plan</li>
-          <li>Follow-up review call</li>
-          <li>30-day tracking template</li>
-          </ul>
-        </div>
-        <div class="offer-card">
-          <h3>Cash Rescue Toolkit</h3>
-          <div class="offer-price">$47</div>
-          <p>DIY cash flow templates and frameworks for business owners who want to self-audit.</p>
-          <ul>
-          <li>Cash flow mapping template</li>
-          <li>Expense audit worksheet</li>
-          <li>Revenue recovery checklist</li>
-          <li>30-60-90 day planner</li>
-          <li>Instant download</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-subtitle">Simple, clear, and designed to get you results fast.</p>
-      <div class="process-grid">
-        <div class="process-step">
-          <h3>1. Submit Your Data</h3>
-          <p>Share your bank statements, P&amp;L, and AR/AP through our secure portal.</p>
-        </div>
-        <div class="process-step">
-          <h3>2. We Audit</h3>
-          <p>Our team maps your cash flow and identifies every leak, delay, and opportunity.</p>
-        </div>
-        <div class="process-step">
-          <h3>3. Get Your Plan</h3>
-          <p>Receive a clear report with specific actions, dollar amounts, and priorities.</p>
-        </div>
-        <div class="process-step">
-          <h3>4. Execute &amp; Recover</h3>
-          <p>Follow the plan (or let us help) and watch your cash position improve.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>How fast do you deliver?</summary>
-          <p>Cash Flow Audit: 24 hours. Recovery Sprint: 48 hours for initial plan, 7 days for implementation. Toolkit: instant download.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is my financial data safe?</summary>
-          <p>Yes. We use encrypted file transfers, access data only during the engagement, and permanently delete all files upon completion.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What size businesses use this?</summary>
-          <p>Businesses doing $50K-$5M annual revenue. Our frameworks scale across service, product, and hybrid models.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What if I need ongoing help?</summary>
-          <p>After the initial engagement, we offer monthly cash flow monitoring at $197/month with priority support.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-  <section class="cta-section">
-    <div class="container">
-      <h2>Ready to Get Started?</h2>
-      <p>Emergency Cash Flow Audits &amp; Recovery Sprints</p>
-      <a href="./offer.html" class="btn btn-primary">Get Your Cash Audit</a>
-    </div>
-  </section>
-  
-  <!-- Lead Capture -->
-  <section class="lead-capture" id="free-resource">
-    <h3>🎁 Free: Cash Flow Emergency Kit</h3>
-    <p>Stop the bleeding — get our free emergency cash flow recovery checklist.</p>
-    <form action="#" method="POST" id="lead-form">
-      <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address">
-      <button type="submit">Get Free Access</button>
-      <p class="privacy-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
-    </form>
   </section>
 
-  <footer class="site-footer">
+  <!-- STATS -->
+  <div class="stats-bar">
     <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2026 CashRescue Now. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="mailto:support@thecashrescue.com">Contact</a>
-          <a href="./offer.html">Services</a>
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-number">72hrs</div>
+          <div class="stat-label">Average time to first results</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-number">87%</div>
+          <div class="stat-label">Gross margin on digital kits</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Sprint slots available daily</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$47</div>
+          <div class="stat-label">Starting price — no fluff</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">How It Works</div>
+        <h2>Revenue rescue in three steps</h2>
+        <p>No lengthy onboarding. No waiting weeks. You pick a tier, we execute, you get results.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">Step 01</div>
+          <span class="step-icon">🎯</span>
+          <h3>Pick Your Rescue Tier</h3>
+          <p>From a $47 digital action kit to a full-day premium sprint — choose the level of help that matches your crisis and budget.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">Step 02</div>
+          <span class="step-icon">⚡</span>
+          <h3>We Execute the Sprint</h3>
+          <p>Our team gets to work immediately. Same-day delivery on Quick Fix sprints. 24–48 hour turnaround on larger packages. No waiting around.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">Step 03</div>
+          <span class="step-icon">📈</span>
+          <h3>You Get Paid Revenue</h3>
+          <p>You receive a completed, deploy-ready deliverable — not a plan, not a deck. Something you can use today to generate revenue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCTS -->
+  <section class="section products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Products &amp; Services</div>
+        <h2>Every tier is designed to move fast</h2>
+        <p>Pick the rescue that fits your situation. Every option comes with real deliverables, not advice.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- FREE CHECKLIST -->
+        <!-- NEW PRODUCT - needs Gumroad listing -->
+        <div class="product-card free-card">
+          <div class="product-tier">Free Resource</div>
+          <h3>Emergency Cash Flow Checklist <span class="badge-new">New</span></h3>
+          <div class="product-price">Free</div>
+          <div class="product-price-note">Instant download</div>
+          <p class="product-desc">A 27-point diagnostic to identify exactly where your business is bleeding revenue right now. Start your rescue in the next 5 minutes.</p>
+          <ul class="product-features">
+            <li>27 revenue leak checkpoints</li>
+            <li>Pricing gap analysis prompts</li>
+            <li>Dormant asset inventory</li>
+            <li>Untapped income source finder</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-free-checklist">Download Free — $0</a>
+          <p class="new-product-note"><!-- NEW PRODUCT - needs Gumroad listing --></p>
+        </div>
+
+        <!-- 72-HOUR PLAYBOOK -->
+        <div class="product-card">
+          <div class="product-tier">Tier 1 — Digital Kit</div>
+          <h3>72-Hour Emergency Revenue Playbook</h3>
+          <div class="product-price">$47</div>
+          <div class="product-price-note">Instant download — PDF + templates</div>
+          <p class="product-desc">The exact 72-hour action plan for generating immediate cash from your existing skills and assets — without paid ads or new products.</p>
+          <ul class="product-features">
+            <li>72-hour cash plan (hourly guide)</li>
+            <li>12 fast-cash revenue methods</li>
+            <li>Asset inventory worksheet</li>
+            <li>Outreach scripts for warm leads</li>
+            <li>Same-day digital product launch guide</li>
+            <li>30-day stabilization plan</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-now-playbook">Buy Now — $47</a>
+        </div>
+
+        <!-- QUICK FIX SPRINT -->
+        <div class="product-card">
+          <div class="product-tier">Tier 2 — Quick Fix</div>
+          <h3>Quick Fix Sprint — 1-Hour Revenue Repair</h3>
+          <div class="product-price">$97</div>
+          <div class="product-price-note">Same-day delivery</div>
+          <p class="product-desc">A focused 1-hour sprint to fix your single biggest revenue bottleneck. Money-back guarantee within 24 hours if unsatisfied.</p>
+          <ul class="product-features">
+            <li>Website or funnel repair</li>
+            <li>Sales copy rewrite</li>
+            <li>Tech troubleshoot</li>
+            <li>Delivered same day via email</li>
+            <li>24-hour satisfaction guarantee</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-quick-fix">Buy Now — $97</a>
+        </div>
+
+        <!-- 30-DAY REBUILD KIT -->
+        <!-- NEW PRODUCT - needs Gumroad listing -->
+        <div class="product-card">
+          <div class="product-tier">New Release</div>
+          <h3>30-Day Revenue Rebuild Kit <span class="badge-new">New</span></h3>
+          <div class="product-price">$197</div>
+          <div class="product-price-note">Complete system — instant download</div>
+          <p class="product-desc">The complete 30-day plan to rebuild sustainable revenue after a cash flow crisis. For freelancers who survived the emergency and need a lasting fix.</p>
+          <ul class="product-features">
+            <li>Week-by-week action calendar</li>
+            <li>15 fill-in-the-blank sales email templates</li>
+            <li>5 proven offer frameworks</li>
+            <li>30-post social content swipe file</li>
+            <li>Past-client reactivation campaign</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-30day-rebuild">Buy Now — $197</a>
+          <p class="new-product-note"><!-- NEW PRODUCT - needs Gumroad listing --></p>
+        </div>
+
+        <!-- STANDARD SPRINT -->
+        <div class="product-card featured">
+          <div class="featured-label">Most Popular</div>
+          <div class="product-tier">Tier 3 — Standard Sprint</div>
+          <h3>Standard Rescue Sprint — Half-Day</h3>
+          <div class="product-price">$297</div>
+          <div class="product-price-note">24-hour turnaround</div>
+          <p class="product-desc">A half-day (4-hour) focused sprint to build or relaunch a core revenue asset. Includes one full revision round.</p>
+          <ul class="product-features">
+            <li>Landing page build or rewrite</li>
+            <li>Email sequence creation</li>
+            <li>Campaign setup &amp; launch</li>
+            <li>Ad creative pack</li>
+            <li>1 revision round included</li>
+            <li>24-hour turnaround guaranteed</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-standard-sprint">Buy Now — $297</a>
+        </div>
+
+        <!-- VIP DAY -->
+        <!-- NEW PRODUCT - needs Gumroad listing -->
+        <div class="product-card">
+          <div class="product-tier">New — Premium Tier</div>
+          <h3>VIP Day — 8-Hour Private Intensive <span class="badge-new">New</span></h3>
+          <div class="product-price">$497</div>
+          <div class="product-price-note">Strictly limited availability</div>
+          <p class="product-desc">An exclusive 8-hour private session to diagnose your revenue crisis and build a complete rescue plan — live, in real time. Includes 30 days of priority email support.</p>
+          <ul class="product-features">
+            <li>Full business revenue audit</li>
+            <li>Custom 90-day revenue roadmap</li>
+            <li>2 done-for-you sprint deliverables</li>
+            <li>30-min strategy call included</li>
+            <li>30 days of priority email support</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-vip-day">Book VIP Day — $497</a>
+          <p class="new-product-note"><!-- NEW PRODUCT - needs Gumroad listing --></p>
+        </div>
+
+        <!-- PREMIUM SPRINT -->
+        <div class="product-card">
+          <div class="product-tier">Tier 4 — Premium Sprint</div>
+          <h3>Premium Rescue Sprint — Full Day</h3>
+          <div class="product-price">$997</div>
+          <div class="product-price-note">48-hour turnaround</div>
+          <p class="product-desc">A full-day (8-hour) sprint that delivers a complete revenue system. Two revision rounds and a 30-minute strategy call included.</p>
+          <ul class="product-features">
+            <li>Complete sales page build</li>
+            <li>Email sequence (5–7 emails)</li>
+            <li>Ad creative pack</li>
+            <li>Full funnel setup</li>
+            <li>2 revision rounds included</li>
+            <li>30-minute strategy call</li>
+            <li>48-hour turnaround</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-premium-sprint">Buy Now — $997</a>
+        </div>
+
+        <!-- RETAINER -->
+        <div class="product-card">
+          <div class="product-tier">Tier 5 — Monthly</div>
+          <h3>Rescue Retainer — Revenue Insurance</h3>
+          <div class="product-price">$197<span style="font-size:20px;font-weight:600;">/mo</span></div>
+          <div class="product-price-note">Cancel anytime · No penalty</div>
+          <p class="product-desc">Guaranteed same-day priority scheduling every month. 1 Quick Fix sprint included, a monthly strategy call, and 10% off all larger sprints.</p>
+          <ul class="product-features">
+            <li>1 Quick Fix sprint/month included</li>
+            <li>Priority same-day scheduling</li>
+            <li>30-minute monthly strategy call</li>
+            <li>10% off Standard &amp; Premium sprints</li>
+            <li>Cancel anytime, no penalty</li>
+          </ul>
+          <a class="gumroad-button" href="https://gumroad.com/l/cashrescue-retainer">Subscribe — $197/mo</a>
+        </div>
+
+      </div>
+
+      <div class="compliance-box">
+        <strong>Important:</strong> CashRescue Now provides service-based deliverables — not loans, credit, or financial products.
+        We deliver done-for-you marketing assets, copy, and campaigns that help you generate revenue from your existing business.
+        This is a service sprint, not a financial instrument.
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">Client Results</div>
+        <h2>Real businesses. Real rescues.</h2>
+        <p>These are the kinds of outcomes our sprint clients report. Your results will depend on your business and how you apply the deliverables.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I had a client ghost me on a $3,200 invoice with rent due in 8 days. Bought the 72-Hour Playbook at 11pm and followed the outreach script. Landed a $800 project by Friday morning. This thing is real."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">💻</div>
+            <div>
+              <div class="author-name">Fiona M.</div>
+              <div class="author-title">Freelance web developer</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Our Q1 revenue dropped 38% overnight after losing our biggest account. Booked the Standard Sprint on a Tuesday. By Thursday I had a new sales page live and two discovery calls booked. Worth every cent of $297."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">📊</div>
+            <div>
+              <div class="author-name">Robert T.</div>
+              <div class="author-title">Marketing agency owner</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The retainer is the best $197 I spend every month. Having a sprint slot I can call on instantly — without negotiating scope, without waiting — is like having a firefighter on speed dial for my business."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🏢</div>
+            <div>
+              <div class="author-name">Angela R.</div>
+              <div class="author-title">Agency founder, 12 staff</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GUARANTEE -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="guarantee-box">
+        <div class="guarantee-icon">🛡️</div>
+        <h2>Our Guarantee</h2>
+        <p>
+          Every Quick Fix Sprint comes with a 24-hour satisfaction guarantee.
+          If you're not happy with the deliverable within 24 hours of receiving it, we'll refund you in full — no questions asked, no forms to fill out.
+          We stand behind every sprint we deliver.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="tag">FAQ</div>
+        <h2>Common questions</h2>
+        <p>If your question isn't here, email us at contact@asiinnovativesolutions.com.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is CashRescue Now a loan or some kind of financial product?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              No. CashRescue Now is a service business. We provide done-for-you marketing deliverables — sales pages, email sequences, ad creatives, campaign setups, and action plans. We do not offer loans, credit, advances, or any financial product. Our Terms of Service explicitly state that all purchases are for service-based deliverables only.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How fast will I receive my deliverable?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Digital kits and the 72-Hour Playbook are instant downloads — you get access the moment your payment processes. Quick Fix Sprints are delivered same-day (within hours of your intake form). Standard Sprints are delivered within 24 hours. Premium Sprints are delivered within 48 hours. The Retainer guarantees same-day priority start for any sprint.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if I'm not satisfied with my sprint delivery?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Quick Fix Sprints come with a 24-hour satisfaction guarantee — full refund, no questions, if you're unsatisfied within 24 hours of delivery. Standard and Premium Sprints include revision rounds (1 and 2 respectively) to ensure the deliverable meets your needs. If after revisions you remain unsatisfied, contact us directly and we'll make it right.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Why is there a limit of 3 sprint slots per day?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Quality is the entire point. When we take on a sprint, we give it our full focus — a rushed deliverable that doesn't generate revenue is worthless to you. By capping sprints at 3 per day, we guarantee every client gets a properly executed deliverable, not something knocked out between 10 other projects. If slots are full when you purchase, you'll be prioritized for next available.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I cancel the Rescue Retainer at any time?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes — absolutely. The Rescue Retainer has no contract, no lock-in, and no cancellation penalty. Cancel anytime via your Gumroad account or by emailing us. Your access continues until the end of the billing period you've already paid for. We believe the retainer should earn your renewal every single month — not trap you in a contract.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="tag">Act Now</div>
+      <h2>Stop watching revenue<br /><span class="highlight">walk out the door.</span></h2>
+      <p>Every day you wait is another day your business bleeds revenue. Pick a tier and let's fix this — today.</p>
+      <div class="hero-cta-group">
+        <a class="btn-primary gumroad-button" href="https://gumroad.com/l/cashrescue-now-playbook">
+          Start With the $47 Playbook
+        </a>
+        <a class="btn-ghost" href="#products">See All Options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">Cash<span>Rescue</span> Now</div>
+          <div class="footer-brand-sub">
+            A brand of ASI Innovative Solutions LLC<br />
+            Emergency revenue sprints for freelancers and business owners.
+          </div>
+          <div class="footer-contact">
+            <a href="mailto:contact@asiinnovativesolutions.com">contact@asiinnovativesolutions.com</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="https://gumroad.com/l/cashrescue-free-checklist">Free Checklist</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-now-playbook">72-Hour Playbook — $47</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-quick-fix">Quick Fix Sprint — $97</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-30day-rebuild">30-Day Rebuild Kit — $197</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-standard-sprint">Standard Sprint — $297</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-vip-day">VIP Day — $497</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-premium-sprint">Premium Sprint — $997</a></li>
+            <li><a href="https://gumroad.com/l/cashrescue-retainer">Rescue Retainer — $197/mo</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Follow Us</div>
+          <ul class="footer-links">
+            <li><a href="https://tiktok.com/@cashrescuenow" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://instagram.com/cashrescuenow" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://twitter.com/cashrescuenow" target="_blank" rel="noopener">Twitter / X</a></li>
+            <li><a href="https://facebook.com/cashrescuenow" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://youtube.com/@cashrescuenow" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://reddit.com/u/cashrescuenow" target="_blank" rel="noopener">Reddit</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          &copy; 2026 ASI Innovative Solutions LLC. All rights reserved. CashRescue Now is a brand of ASI Innovative Solutions LLC.<br />
+          CashRescue Now provides service-based deliverables only. We do not offer loans, credit, financial advice, or financial products of any kind.
+          Results depend on individual effort and business conditions.
+        </div>
+        <div style="font-size:12px;color:var(--muted);">thecashrescue.com</div>
       </div>
     </div>
   </footer>
+
   <script>
-  (function(){
-    var bid='b17',page=location.pathname.split('/').pop()||'index.html';
-    var key='asi_pv_'+bid;
-    try{var d=JSON.parse(localStorage.getItem(key)||'{}');d[page]=(d[page]||0)+1;d._total=(d._total||0)+1;d._last=new Date().toISOString();d._ref=document.referrer||'direct';localStorage.setItem(key,JSON.stringify(d));}catch(e){}
-    if(window.ASI_ANALYTICS_URL){try{navigator.sendBeacon(window.ASI_ANALYTICS_URL,JSON.stringify({business_id:bid,page:page,referrer:document.referrer||'direct',timestamp:new Date().toISOString(),ua:navigator.userAgent}));}catch(e){}}
-  })();
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) { item.classList.add('open'); }
+    }
   </script>
-
-<script>
-// Lead capture — stores submissions locally until email service is connected
-document.addEventListener('DOMContentLoaded', function() {
-  var form = document.getElementById('lead-form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var email = form.querySelector('input[type="email"]').value;
-      if (!email) return;
-      // Store locally (will be replaced with real email API endpoint)
-      var leads = JSON.parse(localStorage.getItem('asi_leads') || '[]');
-      leads.push({ email: email, timestamp: new Date().toISOString(), source: window.location.hostname });
-      localStorage.setItem('asi_leads', JSON.stringify(leads));
-      // Show success
-      var section = form.closest('.lead-capture');
-      section.innerHTML = '<h3>✅ You\'re in!</h3><p>Check your inbox for your free resource.</p>';
-    });
-  }
-});
-</script>
-
-
-
-<div class="asi-network-footer" style="background:#0f172a;color:#94a3b8;padding:32px 20px;margin-top:60px;text-align:center;">
-  <p style="font-size:0.85rem;margin-bottom:16px;color:#64748b;letter-spacing:0.05em;text-transform:uppercase;">Part of the ASI Network</p>
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;margin:0 auto;">
-    <a href="https://growthkithq.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">AI Growth Toolkit</a>
-    <a href="https://blueprintaistudios.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">BlueprintAI Studio</a>
-    <a href="https://aisprintacademy.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">AI Sprint Academy</a>
-    <a href="https://sprintaistudios.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">SprintAI Studio</a>
-    <a href="https://thegrowthpilothq.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">GrowthPilot Media</a>
-    <a href="https://theleadflowhq.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">LeadFlow AI</a>
-    <a href="https://thecashrescue.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">CashRescue Now</a>
-    <a href="https://myseasonalspark.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">SeasonSpark</a>
-    <a href="https://vfaistudios.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">RemixRelay</a>
-    <a href="https://elevstyle.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">Elevere</a>
-    <a href="https://lumiereglowco.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">Lumière Beauty</a>
-    <a href="https://asiinnovativesolutions.com" style="color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border:1px solid #1e3a5f;border-radius:20px;">ASI Innovative Solutions</a>
-  </div>
-  <p style="font-size:0.78rem;margin-top:20px;color:#475569;">© 2026 ASI Network · All rights reserved</p>
-</div>
 
 </body>
 </html>
